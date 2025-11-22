@@ -36,6 +36,9 @@ class DataProcessor(metaclass=SubjectMeta):
 
 # 3. Demonstrate Usage
 if __name__ == "__main__":
+    import logging
+
+    logging.basicConfig(level=logging.DEBUG)
     processor = DataProcessor("FinancialProcessor")
 
     logger1 = ConsoleLogger("ActivityLogger")

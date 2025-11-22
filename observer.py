@@ -24,16 +24,11 @@ class ConsoleLogger(Observer):
         self.name = name
 
     def update(self, subject, data):
-
-        # logging.info(
-        #     "[%s] received update from %s: %s",
-        #     self.name,
-        #     subject.__class__.__name__,
-        #     data,
-        # )
-
-        print(
-            f"[{self.name}] received update from {subject.__class__.__name__}: {data}"
+        logging.info(
+            "[%s] received update from %s: %s",
+            self.name,
+            subject.__class__.__name__,
+            data,
         )
 
 
@@ -42,6 +37,9 @@ class EmailSender(Observer):
         self.recipient = recipient
 
     def update(self, subject, data):
-        print(
-            f"[EmailSender] Sending email to {self.recipient} about {subject.__class__.__name__} update: {data}"
+        logging.info(
+            "[EmailSender] Sending email to %s about %s update: %s",
+            self.recipient,
+            subject.__class__.__name__,
+            data,
         )
