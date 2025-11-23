@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # PYTHON_ARGCOMPLETE_OK
+from abc import ABC, abstractmethod
 import logging
 
+logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 
-class Observer:
+class Observer(ABC):
+    @abstractmethod
     def update(self, *args, **kwargs):
         pass
 
@@ -39,7 +42,7 @@ class TemperatureSensor(Subject):
 
 class Logger(Observer):
     def update(self, *args, **kwargs):
-        logging.info("Temperature: %s" % args[0])
+        logger.info("Temperature: %s" % args[0])
 
 
 class Display(Observer):
