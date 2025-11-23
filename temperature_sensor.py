@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 class Observer(ABC):
     @abstractmethod
-    def update(self, *args, **kwargs):
+    def update(self, *args, **kwargs) -> None:
         pass
 
 
