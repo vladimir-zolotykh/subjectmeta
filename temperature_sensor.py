@@ -5,7 +5,12 @@ from abc import ABC, abstractmethod
 import logging
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
+logger.setLevel(logging.DEBUG)
+fh = logging.FileHandler("temperature_sensor.log", mode="a")
+logger.addHandler(fh)
+ch = logging.StreamHandler()
+logger.addHandler(ch)
+# logging.basicConfig(level=logging.DEBUG)
 
 
 class Observer(ABC):
@@ -50,9 +55,20 @@ class Display(Observer):
         print(f"Temperature: {args[0]}")
 
 
+def run_doctest():
+    """
+    >>> sensor = TemperatureSensor()
+    >>> sensor.attach(Logger())
+    >>> sensor.attach(Display())
+    >>> sensor.temperature = 11
+    Temperature: 11
+    >>> sensor.temperature = 17
+    Temperature: 17
+    """
+    pass
+
+
 if __name__ == "__main__":
-    sensor = TemperatureSensor()
-    sensor.attach(Logger())
-    sensor.attach(Display())
-    sensor.temperature = 11
-    sensor.temperature = 17
+    import doctest
+
+    doctest.testmod()
