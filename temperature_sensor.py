@@ -64,6 +64,9 @@ def run_doctest():
     Temperature: 11
     >>> sensor.temperature = 17
     Temperature: 17
+    >>> with open("temperature_sensor.log") as f:
+    ...         f.read() == "Temperature: 11\\nTemperature: 17\\n"
+    True
     """
     pass
 
