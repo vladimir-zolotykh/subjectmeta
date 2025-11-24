@@ -15,8 +15,8 @@ class Observer(ABC):
 
 
 class Subject:
-    def __init__(self):
-        self.observers = []
+    def __init__(self) -> None:
+        self.observers: list[Observer] = []
 
     def attach(self, observer: Observer):
         self.observers.append(observer)
@@ -31,11 +31,11 @@ class Subject:
 
 class TemperatureSensor(Subject):
     @property
-    def temperature(self):
+    def temperature(self) -> float:
         return self._temperature
 
     @temperature.setter
-    def temperature(self, val):
+    def temperature(self, val: float):
         self._temperature = val
         self.notify(self.temperature)
 
